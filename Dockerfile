@@ -12,6 +12,10 @@ ENV PATH /opt/conda/envs/env/bin:$PATH
 
 ENV PROJECT_PATH /etc/GRS_ranking/src/
 
+RUN python src/init/database.py
+
+RUN python src/init/ranking.py
+
 EXPOSE 82
 
 ENTRYPOINT gunicorn -b 0.0.0.0:82 -k uvicorn.workers.UvicornWorker src.main:app --threads 2 --workers 1 --timeout 1000 --graceful-timeout 30
