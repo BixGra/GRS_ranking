@@ -7,7 +7,7 @@ from src.tools.search import *
 
 app = FastAPI()
 
-origins = ["*"]
+origins = ["*", "https://grseries.com"]
 
 app.add_middleware(
     CORSMiddleware,
