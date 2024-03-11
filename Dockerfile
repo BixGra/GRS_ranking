@@ -16,6 +16,6 @@ RUN python src/init/database.py
 
 RUN python src/init/ranking.py
 
-EXPOSE 82
+EXPOSE 8002
 
-ENTRYPOINT gunicorn -b 0.0.0.0:82 -k uvicorn.workers.UvicornWorker src.main:app --threads 2 --workers 1 --timeout 1000 --graceful-timeout 30
+ENTRYPOINT gunicorn -b 0.0.0.0:8002 -k uvicorn.workers.UvicornWorker src.main:app --threads 2 --workers 1 --timeout 1000 --graceful-timeout 30
