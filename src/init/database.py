@@ -3,7 +3,7 @@ import sqlite3 as sl
 import pandas as pd
 from loguru import logger
 
-base = f"./src/data2"
+base = f"./src/data"
 
 con = sl.connect(f"{base}/ranking.db")
 

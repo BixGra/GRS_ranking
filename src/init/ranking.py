@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import pandas as pd
 
-base = "./src/data2"
+base = "./src/data"
 
 con = sl.connect(f"{base}/ranking.db")
 cur = con.cursor()

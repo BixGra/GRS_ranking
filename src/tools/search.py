@@ -5,7 +5,7 @@ import pandas as pd
 
 from src.tools.format import ranking_row, tournaments_row, results_row
 
-base = "./src/data2"
+base = "./src/data"
 
 
 class Ranking:
