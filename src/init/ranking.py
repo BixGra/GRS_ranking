@@ -48,16 +48,16 @@ for tournament in db_tournaments.iloc:
     tournament_id = tournament[0]
     tournament_name = tournament[1]
     ts = datetime.strptime(str(tournament[2]), '%Y%m%d').date()
-    # if ts - datetime.now() < timedelta(days=365):
-    try:
-        tournament_tier = mappings[tournament_id]
-        tournaments[tournament_id] = {
-            "name": tournament_name,
-            "ts": ts,
-            "distribution_id": tournament_tier
-        }
-    except KeyError:
-        pass
+    if ts - datetime.now() < timedelta(days=365):
+        try:
+            tournament_tier = mappings[tournament_id]
+            tournaments[tournament_id] = {
+                "name": tournament_name,
+                "ts": ts,
+                "distribution_id": tournament_tier
+            }
+        except KeyError:
+            pass
 
 for result in db_results.iloc:
     tournament_id = result[0]
