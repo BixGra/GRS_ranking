@@ -48,33 +48,34 @@ for tournament in db_tournaments.iloc:
     tournament_id = tournament[0]
     tournament_name = tournament[1]
     ts = datetime.strptime(str(tournament[2]), '%Y%m%d').date()
-    if ts - datetime.now() < timedelta(days=365):
-        try:
-            tournament_tier = mappings[tournament_id]
-            tournaments[tournament_id] = {
-                "name": tournament_name,
-                "ts": ts,
-                "distribution_id": tournament_tier
-            }
-        except KeyError:
-            pass
+    try:
+        tournament_tier = mappings[tournament_id]
+        tournaments[tournament_id] = {
+            "name": tournament_name,
+            "ts": ts,
+            "distribution_id": tournament_tier
+        }
+    except KeyError:
+        pass
 
 for result in db_results.iloc:
     tournament_id = result[0]
     try:
         tournament = tournaments[tournament_id]
-        distribution_id = tournament["distribution_id"]
-        distribution = distributions[distribution_id]
-        player_id = result[1]
-        rank = result[2]
-        if rank <= 16:
-            players[player_id]["points"] += distribution[rank]  # Top 16
-        elif rank <= 32:
-            players[player_id]["points"] += distribution[17]  # Top 17-32
-        elif rank <= 64:
-            players[player_id]["points"] += distribution[33]  # Top 33-64
-        else:
-            players[player_id]["points"] += distribution[65]  # Top 65+
+        ts = tournament["ts"]
+        if timedelta(days=0) < datetime.now().date() - ts < timedelta(days=365):
+            distribution_id = tournament["distribution_id"]
+            distribution = distributions[distribution_id]
+            player_id = result[1]
+            rank = result[2]
+            if rank <= 16:
+                players[player_id]["points"] += distribution[rank]  # Top 16
+            elif rank <= 32:
+                players[player_id]["points"] += distribution[17]  # Top 17-32
+            elif rank <= 64:
+                players[player_id]["points"] += distribution[33]  # Top 33-64
+            else:
+                players[player_id]["points"] += distribution[65]  # Top 65+
     except KeyError:
         pass
 
