@@ -66,10 +66,13 @@ class Ranking:
 
     def get_tournament_name(self, tournament_id: int = -1) -> str:
         if tournament_id == -1:
+            now = str(datetime.now().date()).replace("-", "")
+            print(now)
             db_name = pd.read_sql_query(
-                f"""SELECT name FROM TOURNAMENTS ORDER BY ts DESC LIMIT 1;""",
+                f"""SELECT name FROM TOURNAMENTS WHERE ts < {now} ORDER BY ts DESC LIMIT 1;""",
                 self.con
             )
+            print(db_name)
         else:
             db_name = pd.read_sql_query(
                 f"""SELECT name FROM TOURNAMENTS WHERE id = {tournament_id} LIMIT 1;""",
