@@ -4,7 +4,7 @@ WORKDIR /etc/GRS_ranking
 
 COPY ./requirements.txt /etc/GRS_ranking/.
 
-RUN  pip install --upgrade pip && pip --no-cache-dir install -r /etc/GRS_ranking/requirements.txt
+RUN pip install --upgrade pip && pip --no-cache-dir install -r /etc/GRS_ranking/requirements.txt
 
 COPY . /etc/GRS_ranking/.
 
