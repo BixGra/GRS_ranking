@@ -1,0 +1,14 @@
+version: "3.1"
+
+services:
+  grsrankinghost:
+    image: grsrankinghost:latest
+    container_name: grsrankinghost
+    ports:
+      - "8002:8002"
+    networks:
+      - sandbixproxy_mynet
+
+networks:
+  sandbixproxy_mynet:
+    external: true
