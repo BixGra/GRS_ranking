@@ -4,8 +4,6 @@ services:
   grsrankinghost:
     image: grsrankinghost:latest
     container_name: grsrankinghost
-    ports:
-      - "8002:8002"
     networks:
       - sandbixproxy_mynet
 
