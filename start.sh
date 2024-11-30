@@ -1,6 +1,6 @@
-echo "docker build . -t grsranking"
+echo "docker build . -t grsrankinghost"
 
-docker build . -t grsranking
+docker build . -t grsrankinghost
 
 echo "docker compose up -d --remove-orphans"
 
