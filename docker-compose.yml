@@ -2,8 +2,8 @@ version: "3.1"
 
 services:
   grsrankinghost:
-    image: grsrankinghost:latest
-    container_name: grsrankinghost
+    image: grsapi:latest
+    container_name: grsapi
     networks:
       - sandbixproxy_mynet
 
