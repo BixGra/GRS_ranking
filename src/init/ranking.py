@@ -63,7 +63,7 @@ for result in db_results.iloc:
     try:
         tournament = tournaments[tournament_id]
         ts = tournament["ts"]
-        if timedelta(days=0) < datetime.now().date() - ts < timedelta(days=365):
+        if timedelta(days=0) < datetime.now().date() - ts:# < timedelta(days=365):
             distribution_id = tournament["distribution_id"]
             distribution = distributions[distribution_id]
             player_id = result[1]
